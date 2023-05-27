@@ -1,0 +1,45 @@
+@import "mixins";
+
+.card {
+  width: 100%;
+  height: 254px;
+  padding: 20px;
+  background: var(--secondaryBackgroundColor);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+
+  overflow: hidden;
+
+  @include mq(mobile) {
+    width: 328px;
+  }
+
+  @include mq(tablet) {
+    width: 344px;
+  }
+  @include mq(desktop) {
+    width: 282px;
+  }
+  @include mq(desktopMax) {
+    width: 370px;
+  }
+
+  &__icon {
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.63;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
+    
+  }
+}

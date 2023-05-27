@@ -4,12 +4,30 @@
   box-sizing: border-box;
 }
 
+img {
+  display: block;
+}
+
 body {
   font-family: var(--primaryFontFamily);
   font-size: 16px;
   font-weight: 400;
   line-height: 1.63;
   background-color: var(--primiryBackgroundColor);
+}
+
+.text_overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.firstUpperCase:first-letter {
+  text-transform: uppercase;
 }
 
 .container {

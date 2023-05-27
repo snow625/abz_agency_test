@@ -1,0 +1,15 @@
+@import "mixins";
+
+.list{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    @include mq(tablet) {
+        gap: 16px;
+      }
+      @include mq(desktop) {
+        gap: 29px;
+      }
+}

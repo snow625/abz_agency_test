@@ -15,7 +15,7 @@ const LightTooltip = styled(({ className, ...props }) => (
     color: "rgb(255, 255, 255)",
     fontSize: "16px",
     borderRadius: "4px",
-    maxWidth: 400,
+    maxWidth: 300,
   },
 }));
 

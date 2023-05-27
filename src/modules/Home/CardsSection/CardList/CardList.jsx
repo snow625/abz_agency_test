@@ -5,11 +5,12 @@ import s from "./cardList.module.scss";
 
 const CardList = (props) => {
   const { items } = props;
-  const elements = items.map(el=>{
-    const { id} = el;
-    return <Card key={id} itemData={el}/>
-  })
-  
+
+  const elements = items.map((el) => {
+    const { id } = el;
+    return <Card key={id} itemData={el} />;
+  });
+
   return <ul className={s.list}>{elements}</ul>;
 };
 

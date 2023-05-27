@@ -24,7 +24,6 @@ const CustomTooltip = (props) => {
   return (
     <LightTooltip
       disableFocusListener
-      disableTouchListener
       enterDelay={500}
       leaveDelay={200}
       title={

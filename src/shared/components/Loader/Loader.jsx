@@ -25,9 +25,9 @@ const Loader = () => {
           sx={{
             color: () => "#00BDD3",
             animationDuration: "1200ms",
-            position: "absolute",
+            
             borderRadius: "8px",
-            left: 0,
+            
             [`& .${circularProgressClasses.circle}`]: {
               strokeLinecap: "round",
             },

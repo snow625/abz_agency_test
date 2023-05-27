@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 
 import CardList from "./CardList";
 import Button from "components/Button";
+import Loader from "components/Loader";
 import api from "api";
 const { getUsers } = api;
 
@@ -63,11 +64,12 @@ const CardsSection = () => {
         {items.length && <CardList items={items} />}
         {totalPages && (
           <Button
-            disabled={totalPages === page || loading}
+            disabled={totalPages === page}
             handleClick={onShowMoreClick}
             buttonText="Show more"
           />
         )}
+        {loading && <Loader />}
       </div>
     </section>
   );

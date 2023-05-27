@@ -23,6 +23,7 @@ const CustomTooltip = (props) => {
   const { children, title, toUpperCase } = props;
   return (
     <LightTooltip
+      disableFocusListener
       enterDelay={500}
       leaveDelay={200}
       title={

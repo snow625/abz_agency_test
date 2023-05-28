@@ -1,0 +1,39 @@
+.label {
+  width: 100%;
+
+  cursor: pointer;
+  &__box {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    max-width: 380px;
+    border-radius: 4px;
+
+    &_left {
+      height: 100%;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(0, 0, 0, 0.87);
+      border-radius: 4px 0px 0px 4px;
+      
+    }
+    &_rigth {
+      height: 100%;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d0cfcf;
+      border-radius: 0px 4px 4px 0px;
+      border-left: none;
+    }
+  }
+}
+.label:hover .label__box_rigth {
+  border-color: var(--secondaryColor);
+}
+
+.label:hover .label__box_left {
+    border-color: var(--secondaryColor);
+  }

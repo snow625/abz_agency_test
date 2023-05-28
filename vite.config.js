@@ -13,6 +13,7 @@ export default defineConfig({
         'modules': fileURLToPath(new URL('./src/modules', import.meta.url)),
         'api': fileURLToPath(new URL('./src/shared/api/index.js', import.meta.url)),
         'mixins':fileURLToPath(new URL('./src/sass/utils/_mixins.scss', import.meta.url)),
+        'hooks':fileURLToPath(new URL('./src/shared/hooks/index.js', import.meta.url)),
 
     }
 }

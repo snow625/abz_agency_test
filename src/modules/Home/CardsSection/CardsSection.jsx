@@ -1,78 +1,51 @@
-import { useState, useCallback, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import CardList from "./CardList";
 import Button from "components/Button";
-import Loader from "components/Loader";
-import api from "api";
-const { getUsers } = api;
 
 import s from "./cardSection.module.scss";
-const initialState = {
-  loading: false,
-  items: [],
-  page: 1,
-  count: 6,
-  offset: 0,
-  totalPages: 0,
-};
 
-const CardsSection = () => {
-  const [state, setState] = useState(initialState);
-
-  const { items, page, count, offset, totalPages, loading } = state;
-
-  const onShowMoreClick = useCallback(() => {
-    setState((prev) => {
-      const page = prev.page + 1;
-      const offset = prev.page * count;
-      return {
-        ...prev,
-        page,
-        offset,
-      };
-    });
-  }, [count]);
-  const getItems = useCallback(async () => {
-    setState((prev) => {
-      return { ...prev, loading: true };
-    });
-
-    const data = await getUsers({ count, page, offset });
-
-    data &&
-      setState((prev) => {
-        return {
-          ...prev,
-          totalPages: data.total_pages,
-          items: [...prev.items, ...data.users],
-        };
-      });
-
-    setState((prev) => {
-      return { ...prev, loading: false };
-    });
-  }, [count, offset, page]);
-
-  useEffect(() => {
-    getItems();
-  }, [getItems, state.page]);
+const CardsSection = (props) => {
+  const { items, page, totalPages, onClick } = props;
 
   return (
     <section>
-      <div className={`container ${s.wrapper}`}>
+      <div className={`container ${s.wrapper}`} id='users'>
         <h2 className={s.wrapper__title}>Working with GET request</h2>
         {items.length && <CardList items={items} />}
         {totalPages && (
           <Button
             disabled={totalPages === page}
-            handleClick={onShowMoreClick}
+            handleClick={onClick}
             buttonText="Show more"
           />
         )}
-        {loading && <Loader />}
       </div>
     </section>
   );
+};
+
+CardsSection.defaultProps = {
+  onClick: () => {},
+  items: [],
+  totalPages: 0,
+  page: 1,
+};
+
+CardsSection.propTypes = {
+  onClick: PropTypes.func,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      photo: PropTypes.string.isRequired,
+      position: PropTypes.string.isRequired,
+    })
+  ),
+  page: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
 };
 
 export default CardsSection;

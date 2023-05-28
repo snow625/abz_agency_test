@@ -10,7 +10,14 @@ const theme = createTheme({
   typography: {
     fontFamily: ["Nunito", "sans-serif"].join(","),
   },
+  palette: {
+    primary: {
+      main: '#00BDD3',
+    }
+  },
 });
+
+
 
 const App = () => {
   return (

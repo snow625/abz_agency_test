@@ -1,0 +1,18 @@
+.wrapper {
+  text-align: center;
+
+  > :not(:last-child) {
+    margin-bottom: 50px;
+  }
+
+  &__title {
+    font-size: 40px;
+    line-height: 1;
+    text-align: center;
+    font-weight: 400;
+  }
+  .fromIcon {
+    width: 328px;
+    height: 290px;
+  }
+}

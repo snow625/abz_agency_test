@@ -10,9 +10,9 @@ const CardsSection = (props) => {
 
   return (
     <section>
-      <div className={`container ${s.wrapper}`} id='users'>
+      <div className={`container ${s.wrapper}`} id="users">
         <h2 className={s.wrapper__title}>Working with GET request</h2>
-        {items.length && <CardList items={items} />}
+        <CardList items={items} />
         {totalPages && (
           <Button
             disabled={totalPages === page}

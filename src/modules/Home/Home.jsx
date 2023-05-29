@@ -76,20 +76,10 @@ const Home = () => {
 
       const result = await createNewUser(data);
       if (result) {
-        setState((prev) => {
-          return {
-            ...prev,
-            isRegister: true,
-            loading: false,
-            page: 1,
-            offset: 0,
-            items: [],
-            totalPages: 0,
-          };
-        });
+        setState({...initialState, isRegister:true});
         scroller.scrollTo("users", {
           duration: 500,
-          delay: 400,
+          delay: 500,
           smooth: true,
         });
         return;
@@ -108,12 +98,12 @@ const Home = () => {
       <Header />
       <main className={s.main}>
         <Hero />
-        <CardsSection
+        {!!items.length && <CardsSection
           onClick={onShowMoreClick}
           items={items}
           page={page}
           totalPages={totalPages}
-        />
+        />}
         <FormSection onSubmit={onSubmit} isRegister={isRegister} />
       </main>
       <Toaster />

@@ -25,7 +25,7 @@ const Home = () => {
   const [state, setState] = useState(initialState);
 
   const getItems = useCallback(
-    async (page = 1, offset = 0, isReset = false) => {
+    async (page = 1, offset = 0) => {
       setState((prev) => {
         return { ...prev, loading: true };
       });
@@ -34,13 +34,6 @@ const Home = () => {
 
       data &&
         setState((prev) => {
-          if (isReset) {
-            return {
-              ...prev,
-              totalPages: data.total_pages,
-              items: data.users,
-            };
-          }
           return {
             ...prev,
             totalPages: data.total_pages,
@@ -83,14 +76,15 @@ const Home = () => {
 
       const result = await createNewUser(data);
       if (result) {
-        await getItems(1, 0, true);
         setState((prev) => {
           return {
             ...prev,
             isRegister: true,
+            loading: false,
             page: 1,
             offset: 0,
-            loading: false,
+            items: [],
+            totalPages: 0,
           };
         });
         scroller.scrollTo("users", {
@@ -100,11 +94,12 @@ const Home = () => {
         });
         return;
       }
+
       setState((prev) => {
         return { ...prev, loading: false };
       });
     },
-    [getItems]
+    [setState]
   );
 
   const { items, page, totalPages, loading, isRegister } = state;

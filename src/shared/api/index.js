@@ -2,6 +2,21 @@ import axios from "axios";
 import toast from "react-hot-toast";
 export const baseURL = import.meta.env.VITE_APP_API;
 
+const notificationError = (error) => {
+  if (error?.response?.data?.fails) {
+    const errorObj = error.response.data.fails;
+    const errorMessage = [];
+    Object.keys(errorObj).forEach((key) => {
+      errorMessage.push(...errorMessage, ...errorObj[key]);
+    });
+    return toast.error(errorMessage);
+  }
+
+  toast.error(
+    error?.response?.data?.message ? error.response.data.message : error.message
+  );
+};
+
 const errorWrapper = async (request, notification = false) => {
   try {
     const { data } = await request;
@@ -11,11 +26,7 @@ const errorWrapper = async (request, notification = false) => {
     return false;
   } catch (error) {
     if (notification) {
-      toast.error(
-        error?.response?.data?.message
-          ? error.response.data.message
-          : error.message
-      );
+      notificationError(error);
     }
     return false;
   }
@@ -45,7 +56,6 @@ const createNewUser = async (formData) => {
   const token = await login();
   if (token) {
     return await errorWrapper(instance.post(`/users`, formData), true);
-    
   }
 };
 

@@ -85,13 +85,20 @@ const Home = () => {
       if (result) {
         await getItems(1, 0, true);
         setState((prev) => {
-          return { ...prev, isRegister: true };
+          return {
+            ...prev,
+            isRegister: true,
+            page: 1,
+            offset: 0,
+            loading: false,
+          };
         });
         scroller.scrollTo("users", {
           duration: 500,
           delay: 400,
           smooth: true,
         });
+        return;
       }
       setState((prev) => {
         return { ...prev, loading: false };
@@ -100,7 +107,6 @@ const Home = () => {
     [getItems]
   );
 
- 
   const { items, page, totalPages, loading, isRegister } = state;
   return (
     <>

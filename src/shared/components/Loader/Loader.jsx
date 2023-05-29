@@ -1,12 +1,11 @@
 import { createPortal } from "react-dom";
-import s from "./loader.module.scss";
+import { useEffect } from "react";
 
 import CircularProgress, {
   circularProgressClasses,
 } from "@mui/material/CircularProgress";
-import { useEffect } from "react";
 
-useEffect;
+import s from "./loader.module.scss";
 
 const loaderRoot = document.getElementById("loader-root");
 
@@ -23,11 +22,8 @@ const Loader = () => {
           variant="indeterminate"
           disableShrink
           sx={{
-            color: () => "#00BDD3",
             animationDuration: "1200ms",
-            
             borderRadius: "8px",
-            
             [`& .${circularProgressClasses.circle}`]: {
               strokeLinecap: "round",
             },

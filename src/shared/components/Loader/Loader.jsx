@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import CircularProgress, {
   circularProgressClasses,
@@ -10,10 +10,10 @@ import s from "./loader.module.scss";
 const loaderRoot = document.getElementById("loader-root");
 
 const Loader = () => {
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => (document.body.style.overflow = "scroll");
-  });
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
+  //   return () => (document.body.style.overflow = "scroll");
+  // });
 
   return createPortal(
     <div className={s.overlay}>

@@ -21,8 +21,12 @@ const InputFile = (props) => {
     </label>
   );
 };
+InputFile.defaultProps = {
+  handleChange: () => {},
+};
+
 InputFile.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func,
   label: PropTypes.string.isRequired,
 };
 

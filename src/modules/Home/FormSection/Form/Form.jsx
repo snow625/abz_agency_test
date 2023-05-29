@@ -1,23 +1,21 @@
 import PropTypes from "prop-types";
-import TextField from "@mui/material/TextField";
+
+import InputMask from "react-input-mask";
+import {
+  TextField,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+} from "@mui/material";
 import Button from "components/Button";
+import InputFile from "components/InputFile";
 
-import s from "./form.module.scss";
-
-//
 import { fields, initialState } from "./initFormData";
 import { useForm } from "hooks";
 
-//
-import InputMask from "react-input-mask";
-
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-
-import InputFile from "components/InputFile";
+import s from "./form.module.scss";
 
 const Form = ({ onSubmit }) => {
   const { state, handleChange, handleSubmit } = useForm({
@@ -31,17 +29,11 @@ const Form = ({ onSubmit }) => {
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
-      <TextField
-        onChange={handleChange}
-        value={state.name}
-        {...fields.name}
-        // error={false}
-      />
+      <TextField onChange={handleChange} value={state.name} {...fields.name} />
       <TextField
         onChange={handleChange}
         value={state.email}
         {...fields.email}
-        // error={false}
       />
 
       <InputMask

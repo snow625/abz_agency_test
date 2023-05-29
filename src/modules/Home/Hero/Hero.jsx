@@ -2,6 +2,7 @@ import s from "./hero.module.scss";
 import Button from "components/Button";
 import { scroller } from "react-scroll";
 const Hero = () => {
+  
   const onScroll = (name) => {
     scroller.scrollTo(name, {
       duration: 500,

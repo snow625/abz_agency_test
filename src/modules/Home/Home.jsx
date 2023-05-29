@@ -100,6 +100,7 @@ const Home = () => {
     [getItems]
   );
 
+ 
   const { items, page, totalPages, loading, isRegister } = state;
   return (
     <>

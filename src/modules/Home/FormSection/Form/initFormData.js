@@ -13,7 +13,7 @@ export const fields = {
   email: {
     required: true,
     fullWidth: true,
-    
+
     id: "email",
     type: "email",
     label: "Email",
@@ -52,7 +52,6 @@ export const fields = {
     ],
   },
   photo: {
-    fullWidth: true,
     id: "photo",
     type: "file",
     hidden: true,

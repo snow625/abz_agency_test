@@ -1,26 +1,28 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 
 const useForm = ({ onSubmit, initialState, isReset }) => {
   const [state, setState] = useState({ ...initialState });
 
-  const handleChange = ({ target }) => {
-    const { id, name, value, type, checked } = target;
-    if (target?.files?.length) {
+  const handleChange = useCallback(
+    ({ target }) => {
+      const { id, name, value, type, checked } = target;
+      if (target?.files?.length) {
+        setState((prevState) => ({
+          ...prevState,
+          [id]: target.files[0],
+        }));
+        return;
+      }
+
+      const newValue = type === "checkbox" ? checked : value;
       setState((prevState) => ({
         ...prevState,
-        [id]: target.files[0],
+        [name ? name : id]: newValue,
       }));
-      return
-    }
-    
-   
-    const newValue = type === "checkbox" ? checked : value;
-    setState((prevState) => ({
-      ...prevState,
-      [name ? name : id]: newValue,
-    }));
-  };
+    },
+    [setState]
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
